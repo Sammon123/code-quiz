@@ -1,3 +1,4 @@
+alert('the quiz is hard');
 // When user first accesses the page, they are shown an intro message
 //  -in the html we have a div in the intro
 
