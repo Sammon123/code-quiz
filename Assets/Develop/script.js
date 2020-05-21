@@ -36,16 +36,20 @@ var questions = [
 	},
 ];
 // 	- timer is set to 75s
+var quizTimer = 0;
 // 	- hide next button
 // when the user clicks start:
+var nextButton = document.getElementById('next-btn');
 var startButton = document.getElementById('start-btn');
 // when clicked on, run function, startQuiz
+$('#next-btn').hide();
 startButton.addEventListener('click', startQuiz);
 
 function startQuiz() {
 	console.log('started');
 	// 	- the starting div gets hidden
 	$('#question-container').hide();
+
 	// 	- timer starts on first question
 	// 		- timer is getting decrement by one second
 	// 		- deduct x amount of time when question is answered wrong
