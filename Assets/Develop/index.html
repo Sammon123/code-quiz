@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <link href="style.css" rel="stylesheet" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="style.css" rel="stylesheet" />
 
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Code Quiz</h1>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
-        laudantium, placeat dolorem ea repudiandae dolores, fugiat delectus,
-        quae odit iusto non repellat iure. Incidunt eius, nostrum ipsa cumque
-        consectetur exercitationem?
-      </p>
-      <button id="start-btn">Begin</button>
-    </div>
-    <script src="script.js"></script>
-  </body>
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Code Quiz</h1>
+			<div id="question-container" class="hide">
+				<p>
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
+					laudantium, placeat dolorem ea repudiandae dolores, fugiat delectus,
+					quae odit iusto non repellat iure. Incidunt eius, nostrum ipsa cumque
+					consectetur exercitationem?
+				</p>
+				<button id="start-btn">Begin</button>
+				<button>Next</button>
+			</div>
+		</div>
+		<script
+			src="https://code.jquery.com/jquery-3.5.0.min.js"
+			integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+			crossorigin="anonymous"
+		></script>
+		<script src="script.js"></script>
+	</body>
 </html>
