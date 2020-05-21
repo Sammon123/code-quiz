@@ -1,7 +1,40 @@
 // When user first accesses the page, they are shown an intro message
-// a seperate link to the high scores page
 //  -in the html we have a div in the intro
 // 	- set the questions and it's answers to an array
+var questions = [
+	{
+		question: 'commonly used data types do not include:',
+		options: ['strings', 'booleans', 'alerts', 'numbers'],
+		answer: 'alerts',
+	},
+	{
+		question: 'The condition in an if / else statement is enclosed within ___',
+		options: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
+		answer: 'parentheses',
+	},
+	{
+		question: 'Arrays in Javascript can be used to store ___',
+		options: [
+			'numbers and strings',
+			'other arrays',
+			'booleans',
+			'all of the above',
+		],
+		answer: 'all of the above',
+	},
+	{
+		question:
+			'string values must be enclosed within ___ when being assigned to variables',
+		options: ['commas', 'curly brackets', 'quotes', 'parentheses'],
+		answer: 'quotes',
+	},
+	{
+		question:
+			'a very useful tool used during the development and debugging for printing content to the debugger is:',
+		options: ['Javascript', 'terminal/bash', 'for loops', 'console.log'],
+		answer: 'console.log',
+	},
+];
 // 	- timer is set to 75s
 // 	- hide next button
 // when the user clicks start:
