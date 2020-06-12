@@ -47,6 +47,7 @@ var startBtn = document.getElementById("start");
 var feedbackEl = document.getElementById('feedback');
 var nextBtn = document.getElementById('next-button');
 var initialsEl = document.getElementById('initials');
+var submitBtn = document.getElementById('submit');
 
 
 
@@ -167,17 +168,17 @@ function saveHighScore() {
     }
 }
 
+function checkForEnter(event) {
+    if (event.key === 'Enter') {
+        saveHighScore();
+    }
+}
+
+// user clicks button to submit initials
+submitBtn.onclick = saveHighScore;
+//user clicks button to start the quiz
 startBtn.onclick = startQuiz;
 
-// the user is shown the first question of the quiz
+initialsEl.onkeyup = checkForEnter;
 
-// WHEN I answer a question
-//
-// determine whether an answer to specific question is correct or incorrect when answer is clicked on
-// if question is correct, timer remains untouched. when the user clicks 'nextButton' is shown the next question
-// if question is incorrect, deduct some of the time from the timer. when user clicks 'nextButton' the user is presented the next question
 
-// WHEN the game is over the user can:
-// 	- view high scores
-// 	- take quiz again
-// THEN I can save my initials and score
