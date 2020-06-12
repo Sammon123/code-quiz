@@ -84,6 +84,31 @@ function displayQuestions() {
 
 function questionClick() {
     // check if the user guessed wrong
+    if (this.value !== questions[currentQuestionIndex].answer) {
+        time -= 15;
+
+        if (time < 0) {
+            time = 0;
+        }
+        //display new time on the page
+        timerEl.textContent = time;
+
+
+    }
+    // flash right/wrong feedback on the page for half a second
+    feedbackEl.setAttribute('class', 'feedback');
+    setTimeout(function () {
+        feedbackEl.setAttribute('class', 'feedback hide');
+    }, 1000);
+    // move to the next question
+    currentQuestionIndex++;
+    // check if we've run out of questions
+    if (currentQuestionIndex === questionClick.length) {
+        quizEnd();
+    } else {
+        displayQuestions();
+    }
+
 }
 // the user is shown the first question of the quiz
 
