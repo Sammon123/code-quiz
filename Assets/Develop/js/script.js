@@ -46,6 +46,7 @@ var choicesEl = document.getElementById("choices");
 var startBtn = document.getElementById("start");
 var feedbackEl = document.getElementById('feedback');
 var nextBtn = document.getElementById('next-button');
+var initialsEl = document.getElementById('initials');
 
 
 
@@ -143,6 +144,26 @@ function clockTick() {
     // check if the user ran out of time
     if (quizTime <= 0) {
         quizEnd();
+    }
+}
+
+function saveHighScore() {
+    // get value of input box
+    var initials = initialsEl.value.trim();
+    // make sure value wasn't empty
+    if (initials !== "") {
+        // get saved scores from local storage, or if not any, set to an empty array
+        var highscores = JSON.parse(window.localStorage.getItem('highscores')) || [];
+        //format new score object for current user
+        var newScore = {
+            score: quizTime,
+            initials: initials
+        };
+        // save to local storage 
+        highscores.push(newScore);
+        window.localStorage.setItem('highscores', JSON.stringify(highscores));
+        // redirect to next page
+        window.location.href = 'highscores.html';
     }
 }
 
