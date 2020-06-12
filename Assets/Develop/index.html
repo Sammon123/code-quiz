@@ -7,9 +7,12 @@
 		<title>Code Quiz</title>
 	</head>
 	<body>
-		<div class="container">
-			<div class="timer">Time: <span id="time">0</span></div>
-			<div id="start-screen">
+		<div class="scores"><a href="highscores.html">View Highscores</a></div>
+
+		<div class="timer">Time: <span id="time">0</span></div>
+
+		<div class="wrapper">
+			<div id="start-screen" class="start">
 				<h1>Code Quiz</h1>
 				<p>
 					As you proceed in your career as a web developer, you will probably be
@@ -21,8 +24,7 @@
 					polished user interface and be responsive, ensuring that it adapts to
 					multiple screen sizes
 				</p>
-				<button class="start-button">Start Quiz</button>
-				<button class="next-button">Next</button>
+				<button id="start">Start Quiz</button>
 			</div>
 
 			<div id="questions" class="hide">

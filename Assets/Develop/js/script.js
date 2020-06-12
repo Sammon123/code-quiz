@@ -1,11 +1,3 @@
-// global scope of var
-var quizTime = questions.length * 15;
-var quizTimer;
-
-
-// DOM Manipulation
-var questionsEl = document.getElementById("questions");
-var timerEl = document.getElementById("time");
 // array of questions
 var questions = [
     {
@@ -41,6 +33,16 @@ var questions = [
         answer: "console.log"
     }
 ];
+// global scope of var
+var currentQuestionIndex = 0;
+var quizTime = (questions.length) * 15;
+var quizTimer;
+
+
+// DOM Manipulation
+var questionsEl = document.getElementById("questions");
+var timerEl = document.getElementById("time");
+var choicesEl = document.getElementById("choices");
 
 
 // WHEN I click the start button: 
@@ -60,8 +62,29 @@ function startQuiz() {
 
 
 function displayQuestions() {
-
+    // get current question object from the array
+    var currentQuestion = questions[currentQuestionIndex];
+    // update title with the current question
+    var titleEl = document.getElementById('question-title');
+    titleEl.textContent = currentQuestion.title;
+    // clear out any old questions
+    choicesEl.innerHTML = "";
+    //loop over choices
+    currentQuestion.choices.forEach(function (choice, i) {
+        var choiceNode = document.createElement('button');
+        choiceNode.setAttribute('class', 'choice');
+        choiceNode.setAttribute('value', choice);
+        choiceNode.textContent = i + 1 + '. ' + choice;
+        // attach click event listener to each choice
+        choiceNode.onClick = questionClick;
+        // display on the page 
+        choicesEl.appendChild(choiceNode);
+    })
 };
+
+function questionClick() {
+    // check if the user guessed wrong
+}
 // the user is shown the first question of the quiz
 
 // WHEN I answer a question
