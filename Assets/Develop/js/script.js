@@ -35,15 +35,19 @@ var questions = [
 ];
 // global scope of var
 var currentQuestionIndex = 0;
-var quizTime = (questions.length) * 15;
+var quizTime = questions.length * 15;
 var quizTimer;
 
 
 // DOM Manipulation
 var questionsEl = document.getElementById("questions");
-var timerEl = document.getElementById("quizTime");
+var timerEl = document.getElementById("time");
 var choicesEl = document.getElementById("choices");
 var startBtn = document.getElementById("start");
+var feedbackEl = document.getElementById('feedback');
+var nextBtn = document.getElementById('next-button');
+
+
 
 
 // WHEN I click the start button: 
@@ -58,6 +62,8 @@ function startQuiz() {
     //show starting time
     timerEl.textContent = quizTime;
     displayQuestions();
+    console.log('success');
+
 }
 
 
@@ -77,9 +83,11 @@ function displayQuestions() {
         choiceNode.setAttribute('value', choice);
         choiceNode.textContent = i + 1 + '. ' + choice;
         // attach click event listener to each choice
-        choiceNode.onClick = questionClick;
+        choiceNode.onclick = questionClick;
         // display on the page 
         choicesEl.appendChild(choiceNode);
+        console.log('success');
+
     })
 };
 
@@ -96,7 +104,11 @@ function questionClick() {
         timerEl.textContent = quizTime;
 
 
+
+
     }
+    console.log('success');
+
     // flash right/wrong feedback on the page for half a second
     feedbackEl.setAttribute('class', 'feedback');
     setTimeout(function () {
@@ -105,24 +117,37 @@ function questionClick() {
     // move to the next question
     currentQuestionIndex++;
     // check if we've run out of questions
-    if (currentQuestionIndex === questionClick.length) {
+    if (currentQuestionIndex === questions.length) {
         quizEnd();
     } else {
         displayQuestions();
     }
 
 }
+function quizEnd() {
+    // stop timer
+    clearInterval(quizTimer);
+    // show end screen 
+    var endScreenEl = document.getElementById('end-screen');
+    endScreenEl.removeAttribute('class');
+    // show final score
+    var finalScoreEl = document.getElementById('final-score');
+    finalScoreEl.textContent = quizTime;
+    // hide questions section
+    questionsEl.setAttribute('class', 'hide');
+}
 function clockTick() {
     // update time
     quizTime--;
     timerEl.textContent = quizTime;
     // check if the user ran out of time
-    if (time <= 0) {
+    if (quizTime <= 0) {
         quizEnd();
     }
 }
 
 startBtn.onclick = startQuiz;
+
 // the user is shown the first question of the quiz
 
 // WHEN I answer a question
