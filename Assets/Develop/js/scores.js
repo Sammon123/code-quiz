@@ -16,4 +16,11 @@ function printHighScores() {
     })
 }
 
+function clearHighscores() {
+    window.localStorage.removeItem('highscores');
+    window.location.reload();
+}
+
+document.getElementById('clear').onclick = clearHighscores;
+// run function when the page loads
 printHighScores();
