@@ -1,32 +1,67 @@
-var quizTime = 0;
-// GIVEN I am taking a code quiz:
-// upon loading the document, the user is going to see the instructions to the quiz
-// these instructions are part of the html. we'll wrap all of the instructions
-// in a div , with an class of .container
+// global scope of var
+var quizTime = questions.length * 15;
+var quizTimer;
 
+
+// DOM Manipulation
+var questionsEl = document.getElementById("questions");
+var timerEl = document.getElementById("time");
+// array of questions
+var questions = [
+    {
+        title: "Commonly used data types DO NOT include:",
+        choices: ["strings", "booleans", "alerts", "numbers"],
+        answer: "alerts"
+    },
+    {
+        title: "The condition in an if / else statement is enclosed within ____.",
+        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        answer: "parentheses"
+    },
+    {
+        title: "Arrays in JavaScript can be used to store ____.",
+        choices: [
+            "numbers and strings",
+            "other arrays",
+            "booleans",
+            "all of the above"
+        ],
+        answer: "all of the above"
+    },
+    {
+        title:
+            "String values must be enclosed within ____ when being assigned to variables.",
+        choices: ["commas", "curly brackets", "quotes", "parentheses"],
+        answer: "quotes"
+    },
+    {
+        title:
+            "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+        answer: "console.log"
+    }
+];
 
 
 // WHEN I click the start button: 
 function startQuiz() {
-    // hide intro div and start button
-    startTimer();
+    // hide start screen
+    var startScreenEl = document.getElementById('start-screen');
+    startScreenEl.setAttribute("class", "hide")
+    // un-hide questions section
+    questionsEl.removeAttribute("class")
+    // start Timer
+    quizTimer = setInterval(clockTick, 1000)
+    //show starting time
+    timerEl.textContent = quizTime;
     displayQuestions();
-    $(".container").hide();
 }
-$(".start-button").on("click", startQuiz);
-// start timer decrementing from 75s
-function startTimer() {
-    // store the current time in a var called quizTime. the default is 75
-    quizTime = 75;
-    // use setInterval set to 1sec and assign it to a var
-    quizTimer = setInterval(function () {
-        quizTime--;
-        console.log(quizTime);
 
-    }, 1000);
+
+
+function displayQuestions() {
+
 };
-
-function displayQuestions() { };
 // the user is shown the first question of the quiz
 
 // WHEN I answer a question
