@@ -41,8 +41,9 @@ var quizTimer;
 
 // DOM Manipulation
 var questionsEl = document.getElementById("questions");
-var timerEl = document.getElementById("time");
+var timerEl = document.getElementById("quizTime");
 var choicesEl = document.getElementById("choices");
+var startBtn = document.getElementById("start");
 
 
 // WHEN I click the start button: 
@@ -85,13 +86,14 @@ function displayQuestions() {
 function questionClick() {
     // check if the user guessed wrong
     if (this.value !== questions[currentQuestionIndex].answer) {
-        time -= 15;
+        // penalize time
+        quizTime -= 15;
 
-        if (time < 0) {
-            time = 0;
+        if (quizTime < 0) {
+            quizTime = 0;
         }
         //display new time on the page
-        timerEl.textContent = time;
+        timerEl.textContent = quizTime;
 
 
     }
@@ -110,6 +112,17 @@ function questionClick() {
     }
 
 }
+function clockTick() {
+    // update time
+    quizTime--;
+    timerEl.textContent = quizTime;
+    // check if the user ran out of time
+    if (time <= 0) {
+        quizEnd();
+    }
+}
+
+startBtn.onclick = startQuiz;
 // the user is shown the first question of the quiz
 
 // WHEN I answer a question
